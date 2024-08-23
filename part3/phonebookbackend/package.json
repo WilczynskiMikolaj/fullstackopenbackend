@@ -1,0 +1,41 @@
+{
+  "name": "phonebookbackend",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rm -rf dist && cd ../../../fullstackopen/fullstackopen/part2/phonebook && npm run build && cp -r dist ../../../../fullstackopenbackend/part3/phonebookbackend",
+    "deploy": "fly deploy",
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "logs:prod": "fly logs",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilczynskiMikolaj/fullstackopenbackend.git"
+  },
+  "author": "Wilczynski Mikolaj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WilczynskiMikolaj/fullstackopenbackend/issues"
+  },
+  "homepage": "https://github.com/WilczynskiMikolaj/fullstackopenbackend#readme",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@flydotio/dockerfile": "^0.5.8",
+    "@stylistic/eslint-plugin-js": "^2.6.4",
+    "eslint": "^9.9.0",
+    "globals": "^15.9.0",
+    "nodemon": "^3.1.4"
+  }
+}
