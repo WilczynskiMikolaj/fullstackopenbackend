@@ -7,7 +7,7 @@ require('dotenv').config()
 
 const Person = require('./models/person')
 
-morgan.token('persondata', (req, res) => JSON.stringify(req.body))
+morgan.token('persondata', (req, _res) => JSON.stringify(req.body))
 
 app.use(express.static('dist'))
 app.use(cors())
@@ -30,8 +30,6 @@ const errorHandler = (error, request, response, next) => {
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
 }
-
-let persons = []
 
 app.get('/api/persons', (request, response, next) => {
   Person.find({}).then(persons => {
@@ -64,7 +62,7 @@ app.get('/info', (request, response, next) => {
 
 app.delete('/api/persons/:id', (request, response, next) => {
   Person.findByIdAndDelete(request.params.id)
-    .then(result => {
+    .then( () => {
       response.status(204).end()
     })
     .catch(error => next(error))
